@@ -2,7 +2,7 @@
 library(lavaan)
 
 urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note1-Rcode/Predict.DAT"
-PredictG <- read.table(urlfile, header=T, sep= " ")
+PredictG <- read.table(urlfile, header=F, sep= " ")
 
 colnames(PredictG) = c("GRAVEREQ", "GRAVELEC","KNOWLEDG", "IQPREVYR", "EDMOTIV")
 cov(PredictG)
