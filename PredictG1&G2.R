@@ -6,14 +6,20 @@ urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note1-Rcode/Predi
 PredictG <- read.table(urlfile, header=F, sep= " ")
 
 colnames(PredictG) = c("GRAVEREQ", "GRAVELEC","KNOWLEDG", "IQPREVYR", "EDMOTIV")
+cov(PredictG)
 
 model1 <- '
        
          GRAVEREQ ~ KNOWLEDG + IQPREVYR + EDMOTIV
          GRAVELEC ~ KNOWLEDG + IQPREVYR + EDMOTIV
+         
+         GRAVEREQ ~~ 0*GRAVELEC
+         
 '
-fit1 = lavaan::sem(model1,data = PredictG,std.lv=T,likelihood = "wishart")
-summary(fit1, fit.measures = T, standardized=TRUE,rsquare=T)
+fit1 = lavaan::cfa(model1, data= PredictG,likelihood = "wishart",
+                   std.lv=T,fixed.x=F)
+summary(fit1, standardized=TRUE,rsquare=T,fit.measures = TRUE)
+
 
 model2 <- '
        
@@ -23,7 +29,7 @@ model2 <- '
          GRAVEREQ ~~ GRAVELEC
 '
 fit2 = lavaan::sem(model2,data = PredictG,std.lv=T,likelihood = "wishart")
-summary(fit2, fit.measures = T, standardized=TRUE,rsquare=T)
-
-
+summary(fit2, standardized=TRUE,rsquare=T,fit.measures = TRUE)
+install.packages("usethis")
+E
 
