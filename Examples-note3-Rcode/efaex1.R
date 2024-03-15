@@ -1,8 +1,16 @@
 
 library(lavaan)
-npv <- read.csv("~/Downloads/Examples-note3/npv.csv")
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note3-Rcode/npv.csv"
+npv <- read.csv(urlfile, header=T, sep= ",")
 npv = npv[,c(1:9)]
 
-var.names <- colnames(npv)
-fit <- efa(data = npv[,var.names], nfactors = 1:3)
-summary(fit)
+
+
+fit_vari <- efa(data = npv, nfactors = 3, 
+                rotation = "varimax",output = "efa") 
+#3: three eigenvalues are freater than 1
+## rotation =  varimax,  promax, 
+
+summary(fit_vari,fit.measures = T)
+fit_vari$loadings
+

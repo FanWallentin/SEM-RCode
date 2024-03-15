@@ -25,6 +25,12 @@ fit <- lavaan::cfa(model, sample.cov = cormat,sample.nobs = 138,
                    likelihood = "wishart", std.lv=T)
 summary(fit,rsquare=T,standardized=TRUE)
 
+require(semPlot)
+semPaths(fit, whatLabels = "est",
+         sizeMan = 10, edge.label.cex = 0.75,
+         style = "ram",
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation =4)
 
 
 
