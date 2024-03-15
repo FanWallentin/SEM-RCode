@@ -1,5 +1,7 @@
+
 ##Union Sentiment of Textile Workers
-library(lavaan)
+
+require(lavaan)
 #### Union A
 
 lower <- '  
@@ -18,10 +20,21 @@ modelA <- '
 
 '
 fit_A <- lavaan::cfa(modelA,sample.cov = covmat, 
-                     sample.nobs = 173,likelihood = "wishart")
+                     sample.nobs = 173,likelihood = "wishart",
+                     std.lv=T,fixed.x=F)
 summary(fit_A, fit.measures = T, rsquare = T)
 
-####### Union B: the same as Union A, but using different data form 
+## Path diagram
+
+require(semPlot)
+semPaths(fit_A, whatLabels = "est",
+         sizeMan = 10, edge.label.cex = 0.75,
+         style = "ram",
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4,
+         curve=2.3,node.width = 1)
+
+####### Union B: the same as Union A, but using raw data instead of covariance matrix
 
 
 

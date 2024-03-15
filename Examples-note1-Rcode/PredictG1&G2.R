@@ -26,14 +26,14 @@ fitMeasures(fit1) ## AIC = 2t - 2ln(L)
 
 ## Path diagram
 require(semPlot)
+require(semptools)
 m <- matrix(c(NA,"KNOWLEDG",     NA,  "GRAVEREQ",
               NA,NA,  NA,   NA,
               "IQPREVYR",NA,  NA, NA,
               NA, NA,    NA,"GRAVELEC",
               NA,"EDMOTIV",   NA,  NA), byrow = TRUE, 5, 4)
 
-
-semPaths(fit1, whatLabels = "est",
+path = semPaths(fit1, whatLabels = "est",
          sizeMan = 10, edge.label.cex = 0.75,
          style = "ram",
          nCharNodes = 0, nCharEdges = 0,
