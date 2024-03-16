@@ -3,7 +3,7 @@
 library(lavaan)
 library(tidyverse)
 
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note6-Rcode/humphreys.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note7-Rcode/humphreys.csv"
 dat = read.csv(urlfile)
 dat <- dat[,1:10]
 

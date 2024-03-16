@@ -1,7 +1,7 @@
 library(lavaan)
 library(readr)
 
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note5-Rcode/NPVG(R).DAT"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note1-Rcode/NPVG(R).DAT"
 npvg = read_lines(urlfile)
 
 readCorrMatrix <- function(data){

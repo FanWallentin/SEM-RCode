@@ -1,5 +1,5 @@
 library(lavaan)
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note6-Rcode/psavar.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note7-Rcode/psavar.csv"
 psavar = read.csv(urlfile)
 psavar = psavar[,c(1:6)]
 
