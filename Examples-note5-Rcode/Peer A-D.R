@@ -1,7 +1,7 @@
 library(lavaan)
 library(tidyverse)
 
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note4-Rcode/peerinfluences.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note5-Rcode/peerinfluences.csv"
 peer <- read.csv(urlfile)
 peer <- peer[,c(1:10)]
 
@@ -17,8 +17,12 @@ model_A <- '
 
 fit_A <- lavaan::sem(model_A, data = peer,
            likelihood = "wishart")
-summary(fit_A, standardized=TRUE,rsquare=T)
-
+summary(fit_A, standardized=TRUE,rsquare=T,fit.measures = T)
+semPaths(fit_A, whatLabels = "est",
+         sizeMan = 10, edge.label.cex = 0.75,
+         style = "ram",
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
 ######### Peer B
 peer_std <- peer %>% mutate_all(~(scale(.) %>% as.vector))
 
@@ -34,8 +38,8 @@ model_B <- '
            
 '
 
-fit_B <- sem(model_B, data = peer_std,likelihood = "wishart")
-summary(fit_B, standardized=TRUE,rsquare=T)
+fit_B <- lavaan::sem(model_B, data = peer_std,likelihood = "wishart")
+summary(fit_B, standardized=TRUE,rsquare=T,fit.measures = T)
 lavInspect(fit_B, what = "cov")
 
 

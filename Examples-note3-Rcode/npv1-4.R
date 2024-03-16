@@ -1,7 +1,7 @@
 library("lavaan")
 library("tidyverse")
 
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note3-Rcode/npv.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note3-Rcode/npv.csv"
 npv <- read.csv(urlfile)
 npv <- npv[,c(1:9)]
 
@@ -34,7 +34,8 @@ model_npv2 <- '
           '
 
 npv_std <- npv %>% mutate_all(~(scale(.) %>% as.vector))
-fit_npv2 = lavaan::cfa(model_npv2,data = npv_std,std.lv=TRUE,likelihood = "wishart",estimator = "MLR")
+fit_npv2 = lavaan::cfa(model_npv2,data = npv_std,std.lv=TRUE,
+                       likelihood = "wishart",estimator = "MLR")
 summary(fit_npv2, standardized=TRUE,rsquare = T,fit.measures=T)
 
 

@@ -44,11 +44,16 @@ model <- '
   INVENTRY ~~ 0*OBSERVE
 '
 
-fit <- lavaan::cfa(model, sample.cov = covmat, sample.nobs = 500, 
-           std.lv = T,likelihood = "wishart")
+fit <- lavaan::sem(model, sample.cov = covmat, sample.nobs = 500, 
+                   std.lv = T,likelihood = "wishart")
 
 # Print the summary of the model
-summary(fit,standardized=TRUE,rsquare=T)
+summary(fit,standardized=TRUE,rsquare=T,fit.measures = TRUE)
+semPaths(fit, whatLabels = "est",
+         sizeMan = 4, edge.label.cex = 0.75,
+         style = "ram",
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4,fixedStyle = c( "white","0"))
 
 #### MTMM - CFA SPECIFICATION correlated traits and methods
 #### mtmm-browm
