@@ -2,7 +2,7 @@
 ##### Modified Model for Performance and Satisfaction
 library(lavaan)
 
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note4-Rcode/Bagizzi.DAT"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note5-Rcode/Bagizzi.DAT"
 bagizzi <- readLines(urlfile)
 lower_corr <- bagizzi[1:8]
 corrmat <- getCov(lower_corr,names = c("PERFORMM", "JBSATIS1", "JBSATIS2", 
@@ -26,15 +26,12 @@ model_A <- '
           #VERBINTM  ~~ VERBINTM
         
  '
-fit_A <- lavaan::sem(model_A, sample.cov = corrmat, sample.nobs = 122,
-           likelihood = "wishart")
+fit_A <- lavaan::cfa(model_A, sample.cov = corrmat, sample.nobs = 122,
+           likelihood = "wishart",std.lv = T)
 summary(fit_A, standardized=TRUE,rsquare=T,fit.measures=T)
-
+fitmeasures(fit_A)
 
 ######## BagozziB
-
-
-
 
 model_B <- '
           Perform =~ PERFORMM
@@ -54,7 +51,7 @@ model_B <- '
  '
 fit_B <- sem(model_B, sample.cov = corrmat, sample.nobs = 122,
               likelihood = "wishart")
-summary(fit_B, standardized=TRUE,rsquare=T)
+summary(fit_B, standardized=TRUE,rsquare=T,fit.measures=T)
 
 
 

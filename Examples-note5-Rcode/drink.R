@@ -4,7 +4,7 @@
 library(lavaan)
 library(tidyverse)
 
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note4-Rcode/drinkdata.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note5-Rcode/drinkdata.csv"
 drink <- read.csv(urlfile)
 drink <- drink[,c(1:16)]
 drink_std <- drink %>% mutate_at(colnames(drink), ~(scale(.) %>% as.vector))
@@ -21,6 +21,7 @@ summary(fit11a,standardized=TRUE,rsquare=T,fit.measures=T)
 
 
 ######## drink12a
+cormat = cor(drink)
 model12a <- '
              Attitude =~ X1 + X2 + X3 + X4 + X5
              Norms =~ X6 + X7 + X8
@@ -28,6 +29,11 @@ model12a <- '
 fit12a <- lavaan::cfa(model12a,sample.cov = cormat, sample.nobs = 756,
                       likelihood = "wishart",std.lv=T)
 summary(fit12a,standardized=TRUE,rsquare=T,fit.measures=T)
+semPaths(fit12a, whatLabels = "est",
+         sizeMan = 10, edge.label.cex = 0.75,
+         style = "ram",
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
 
 ######## drink13a
 model13a <- '
