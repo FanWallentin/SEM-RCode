@@ -26,7 +26,6 @@ fitMeasures(fit1) ## AIC = 2t - 2ln(L)
 
 ## Path diagram
 require(semPlot)
-require(semptools)
 m <- matrix(c(NA,"KNOWLEDG",     NA,  "GRAVEREQ",
               NA,NA,  NA,   NA,
               "IQPREVYR",NA,  NA, NA,
