@@ -12,19 +12,19 @@ school = hsschools %>%
 
 prop.table(table(hsschools$SCHOOL))
 
-GW = as.data.frame(group_split(school)[2][[2]])
+GW = as.data.frame(group_split(school)[1][[1]])
 PA = as.data.frame(group_split(school)[2][[1]])
 
 require(MVN)
-mvn(GW[,3:13],univariateTest = "SW",multivariatePlot = "qq")
-mvn(PA[,3:13],univariateTest = "SW",multivariatePlot = "qq")
+mvn(GW[,5:13],univariateTest = "SW",multivariatePlot = "qq")
+mvn(PA[,5:13],univariateTest = "SW",multivariatePlot = "qq")
 
 ## or
-summary(hsschools)
+summary(hsschools[,5:13])
 
 ## or
 library(psych)
-describeBy(hsschools[,3:13],
+describeBy(hsschools[,5:13],
            group = hsschools$SCHOOL,
            digits= 4)
 
