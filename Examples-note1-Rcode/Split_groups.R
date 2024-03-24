@@ -39,7 +39,7 @@ a =  ggplot(hsschools[,1:4], aes(x = SCHOOL, fill = SCHOOL)) +
 b = ggplot(hsschools[,1:4], aes(x = GENDER, fill = GENDER)) +
   geom_bar() +
   geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("female","male"),values=c('tomato','cyan3'))
+  scale_fill_manual(labels=c("boys","girls"),values=c('tomato','cyan3'))
 
 c =  ggplot(hsschools[,1:4], aes(x = AGEYEAR, fill = AGEYEAR)) +
   geom_bar() +
@@ -57,7 +57,7 @@ ggarrange(a,b,c,d,
 b_1 = ggplot(GW[,1:4], aes(x = GENDER, fill = GENDER)) +
   geom_bar() +
   geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("female","male"),values=c('tomato','cyan3'))
+  scale_fill_manual(labels=c("boys","girls"),values=c('tomato','cyan3'))
 
 c_1 =  ggplot(GW[,1:4], aes(x = AGEYEAR, fill = AGEYEAR)) +
   geom_bar() +
@@ -74,7 +74,7 @@ ggarrange(ggarrange(b_1,c_1,
 b_2 = ggplot(PA[,1:4], aes(x = GENDER, fill = GENDER)) +
   geom_bar() +
   geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("female","male"),values=c('tomato','cyan3'))
+  scale_fill_manual(labels=c("boys","girls"),values=c('tomato','cyan3'))
 
 c_2 =  ggplot(PA[,1:4], aes(x = AGEYEAR, fill = AGEYEAR)) +
   geom_bar() +
