@@ -32,21 +32,21 @@ theme_set(
 )
 
 ## HSSCHOOLS
-a =  ggplot(hsschools[,1:4], aes(x = SCHOOL, fill = SCHOOL)) +
+a =  ggplot(hsschools[,1:4], aes(x = SCHOOL)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("GW","PA"),values=c('tomato','cyan3'))
-b = ggplot(hsschools[,1:4], aes(x = GENDER, fill = GENDER)) +
-  geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("boys","girls"),values=c('tomato','cyan3'))
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
 
-c =  ggplot(hsschools[,1:4], aes(x = AGEYEAR, fill = AGEYEAR)) +
+  b = ggplot(hsschools[,1:4], aes(x = GENDER)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")#+
-d =  ggplot(hsschools[,1:4], aes(x = BIRTHMON, fill = BIRTHMON)) +
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
+  
+c =  ggplot(hsschools[,1:4], aes(x = AGEYEAR)) +
+              geom_bar() +
+              geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
+
+d =  ggplot(hsschools[,1:4], aes(x = BIRTHMON)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")#+
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
 
 
 ggarrange(a,b,c,d,
@@ -54,34 +54,34 @@ ggarrange(a,b,c,d,
 
 ## GW
 
-b_1 = ggplot(GW[,1:4], aes(x = GENDER, fill = GENDER)) +
+b_1 = ggplot(GW[,1:4], aes(x = GENDER)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("boys","girls"),values=c('tomato','cyan3'))
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
+  
+c_1 =  ggplot(GW[,1:4], aes(x = AGEYEAR)) +
+  geom_bar() +
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
 
-c_1 =  ggplot(GW[,1:4], aes(x = AGEYEAR, fill = AGEYEAR)) +
+d_1 =  ggplot(GW[,1:4], aes(x = BIRTHMON)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")#+
-d_1 =  ggplot(GW[,1:4], aes(x = BIRTHMON, fill = BIRTHMON)) +
-  geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")#+
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
 
 
 ggarrange(ggarrange(b_1,c_1,
           ncol = 2, nrow = 1 ),d_1,nrow = 2,labels = "GW")
 
 ## PA
-b_2 = ggplot(PA[,1:4], aes(x = GENDER, fill = GENDER)) +
+b_2 = ggplot(PA[,1:4], aes(x = GENDER)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")+
-  scale_fill_manual(labels=c("boys","girls"),values=c('tomato','cyan3'))
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
 
-c_2 =  ggplot(PA[,1:4], aes(x = AGEYEAR, fill = AGEYEAR)) +
+c_2 =  ggplot(PA[,1:4], aes(x = AGEYEAR)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")#+
-d_2 =  ggplot(PA[,1:4], aes(x = BIRTHMON, fill = BIRTHMON)) +
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
+
+d_2 =  ggplot(PA[,1:4], aes(x = BIRTHMON)) +
   geom_bar() +
-  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")#+
+  geom_text(aes(label = ..count..), stat = "count", vjust = 1.5, colour = "white")
 
 
 ggarrange(ggarrange(b_2,c_2,
@@ -89,5 +89,3 @@ ggarrange(ggarrange(b_2,c_2,
 
 
 
-
-           
