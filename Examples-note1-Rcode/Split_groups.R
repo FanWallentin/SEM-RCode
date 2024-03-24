@@ -16,6 +16,7 @@ GW = as.data.frame(group_split(school)[1][[1]])
 PA = as.data.frame(group_split(school)[2][[1]])
 
 require(MVN)
+mvn(hsschools[,5:13],univariateTest = "SW",multivariatePlot = "qq")
 mvn(GW[,5:13],univariateTest = "SW",multivariatePlot = "qq")
 mvn(PA[,5:13],univariateTest = "SW",multivariatePlot = "qq")
 
