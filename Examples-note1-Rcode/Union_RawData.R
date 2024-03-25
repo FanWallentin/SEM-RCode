@@ -3,7 +3,7 @@
 
 library(lavaan)
 #### Union A
-urlfile="https://raw.github.com/nyj933/SEM_Rcode/main/Examples-note1-Rcode/union.dat"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note1-Rcode/union.dat"
 union <- read.table(urlfile)
 
 colnames(union)=c("Y1","Y2","Y3","X1","X2")
@@ -13,7 +13,7 @@ modelB <- '
            Y3 ~ X1 +Y1 +Y2
 
 '
-fit_B <- lavaan::cfa(modelA,data = union,likelihood = "wishart",
+fit_B <- lavaan::cfa(modelB,data = union,likelihood = "wishart",
                      fixed.x=F,std.lv = T)
 summary(fit_B, fit.measures = T, rsquare = T)
 
