@@ -1,6 +1,6 @@
 library(lavaan)
 
-urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note8-Rcode/jsp_aggregated.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note4-Rcode/jsp_aggregated.csv"
 jsp = read.csv(urlfile)
 jsp <- jsp[,c(1:6)]
 jsp[jsp==-9] = NA
@@ -16,6 +16,16 @@ fit1 <- lavaan::cfa(model1a, data=jsp,missing="FIML",
                likelihood = "wishart",
                std.lv=T)
 summary(fit1,standardized=TRUE,rsquare=T)
+
+## Path diagrams
+require(semPlot)
+path = semPaths(fit1, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 5,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
+
+
 
 model2a <- '
 
@@ -35,5 +45,11 @@ fit2 <- lavaan::cfa(model2a, data=jsp,missing="FIML",
                     std.lv=T)
 summary(fit2,standardized=TRUE,rsquare=T)
 
+## Path diagrams
+path = semPaths(fit2, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 5,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
 
 
