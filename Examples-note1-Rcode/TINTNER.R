@@ -63,6 +63,14 @@ fit1 <- lavaan::cfa(model1,sample.cov = covmat,
 
 summary(fit1, standardized=TRUE,rsquare=T,fit.measures=T)
 
+## Path diagram
+
+require(semPlot)
+path = semPaths(fit1, whatLabels = "est",
+                sizeMan = 10, edge.label.cex = 0.75,
+                style = "ram",
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
 #### Regress Y1 on Y2 X2 and X3 with X1-X3 as Instrumental Variables
 
 model2 <- ' 
@@ -79,4 +87,10 @@ fit2 <- lavaan::cfa(model2,sample.cov = covmat,
 summary(fit2, standardized=TRUE,rsquare=T,fit.measures=T)
 
 fitMeasures(fit2, fit.measures = c("chisq", "rmsea"))
+## Path diagram
 
+path = semPaths(fit2, whatLabels = "est",
+                sizeMan = 10, edge.label.cex = 0.75,
+                style = "ram",
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
