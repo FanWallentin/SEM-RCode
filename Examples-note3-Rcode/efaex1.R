@@ -13,4 +13,3 @@ fit_vari <- efa(data = npv, nfactors = 3,
 
 summary(fit_vari,fit.measures = T)
 fit_vari$loadings
-
