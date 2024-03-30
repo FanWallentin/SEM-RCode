@@ -24,7 +24,7 @@ fit_npv1 = lavaan::cfa(model_npv1,sample.cov = corr_npv1,sample.nobs = 145,std.l
 
 summary(fit_npv1, standardized=TRUE,rsquare = T,fit.measures=T)
 
-## Path diagram
+## Path diagrams
 require(semPlot)
 path = semPaths(fit_npv1, whatLabels = "est",
                 sizeMan = 8, edge.label.cex = 0.75,
