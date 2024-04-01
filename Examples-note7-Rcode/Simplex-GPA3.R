@@ -49,6 +49,15 @@ model <- '
 GPA.out <- lavaan(model, data = dat,auto.var = TRUE,likelihood = "wishart")
 summary(GPA.out, fit.measures=TRUE, rsquare=T,standardized=T)
 
+## Path diagrams
+require(semPlot)
+semPaths(GPA.out, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree",rotation = 2)
+
+
 
 
 

@@ -33,6 +33,15 @@ fit_A <- lavaan::sem(model_A, sample.cov = cormat,
 
 summary(fit_A, standardized=TRUE,rsquare=T,nd=4)
 
+## Path diagrams
+require(semPlot)
+semPaths(fit_A, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
+
 ##if don't add "SCATV9 ~~ SCATV7"
 ##lavaan WARNING: covariance matrix of latent variables is not positive definite;
 ##highly correlated factors 
@@ -66,6 +75,12 @@ fit_B <- lavaan::cfa(model_B, sample.cov = cormat,
                      likelihood = "wishart")
 
 summary(fit_B, standardized=TRUE,rsquare=T)
+semPaths(fit_B, whatLabels = "est",
+         sizeMan = 5, edge.label.cex = 0.75,
+         style = "lisrel",sizeLat = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         rotation = 3,levels = c(1,3.5,5,7))
+
 
 
 

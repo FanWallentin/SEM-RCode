@@ -45,6 +45,13 @@ model <- '
 GPA.out <- lavaan(model, data = dat,auto.var = TRUE,likelihood = "wishart")
 summary(GPA.out, fit.measures=TRUE, rsquare=T,standardized=T)
 
+## Path diagrams
+require(semPlot)
+semPaths(GPA.out, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree",rotation = 2)
 
 
 ###### GPA: no constrains (GPA1 = GPA2, GPA7 = GPA8)
@@ -91,6 +98,11 @@ summary(GPAno.out, fit.measures=TRUE, rsquare=T,standardized=T)
 #####         not be inverted. This may be a symptom that the model is not identified.
 
 
+semPaths(GPAno.out, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree",rotation = 2)
 
 
 

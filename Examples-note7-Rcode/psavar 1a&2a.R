@@ -28,6 +28,13 @@ fit1 <- growth(model1, data=psavar,missing="FIML",
 
 summary(fit1,standardized=TRUE,rsquare=T)
 
+## Path diagrams
+require(semPlot)
+semPaths(fit1, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 2,levels = c(1,3.5,5,7))
 
 ######## Linear Growth Curve with Covariate for psavar Data
 
@@ -57,6 +64,12 @@ fit2 <- growth(model2, data=psavar,missing="FIML",
 
 summary(fit2,standardized=TRUE,rsquare=T)
 lavInspect(fit2,"implied")
+
+semPaths(fit2, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 2,)
 
 
 

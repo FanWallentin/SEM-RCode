@@ -37,6 +37,13 @@ fit1a <- lavaan::growth(model1a, data=dyad, ,missing="FIML",
                information = "expected")
 summary(fit1a,standardized=TRUE,rsquare=T)
 
+## Path diagrams
+require(semPlot)
+semPaths(fit1a, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 4,sizeLat = 4,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
 
 
 ########### dyad2a
@@ -79,6 +86,15 @@ fit2a <- lavaan::growth(model2a, data=dyad, ,
                         information = "expected")
 summary(fit2a,standardized=TRUE,rsquare=T)
 
+semPaths(fit2a, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 4,sizeLat = 4,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
+
+
+
+
 ########### dyad3a
 
 model3a <- '
@@ -119,6 +135,14 @@ fit3a <- lavaan::growth(model3a, data=dyad, ,
                         information = "expected")
 summary(fit3a,standardized=TRUE,rsquare=T)
 
+path = semPaths(fit3a, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 4,sizeLat = 4,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
+
+
+
 ########### dyad4a
 
 model4a <- '
@@ -156,6 +180,13 @@ fit4a <- lavaan::growth(model4a, data=dyad, ,
                         meanstructure = T,
                         information = "expected")
 summary(fit4a,standardized=TRUE,rsquare=T)
+semPaths(fit4a, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 4,sizeLat = 4,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
+
+
 
 ########### dyad5a
 model5a <- '
@@ -194,4 +225,9 @@ fit5a <- lavaan::growth(model5a, data=dyad,,
                         information = "expected")
 summary(fit5a,standardized=TRUE,rsquare=T)
 
+semPaths(fit5a, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 4,sizeLat = 4,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
 
