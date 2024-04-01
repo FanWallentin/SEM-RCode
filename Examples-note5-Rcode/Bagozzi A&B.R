@@ -62,7 +62,7 @@ fit_B <- sem(model_B, sample.cov = corrmat, sample.nobs = 122,
 summary(fit_B, standardized=TRUE,rsquare=T,fit.measures=T)
 ## Path diagrams
 require(semPlot)
-path = semPaths(fit_B, whatLabels = "est",
+semPaths(fit_B, whatLabels = "est",
                 sizeMan = 8, edge.label.cex = 0.75,
                 style = "ram",sizeMan2 = 5,
                 nCharNodes = 0, nCharEdges = 0,

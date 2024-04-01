@@ -2,6 +2,7 @@
 ### Estimating MTMM model by Diagonally Weighted Least Squares
 
 library(lavaan)
+library(semPlot)
 urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note5-Rcode/leader1.txt"
 leader1 <- read.csv(urlfile,sep = "")
 

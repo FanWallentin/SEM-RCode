@@ -1,4 +1,6 @@
 library(lavaan)
+require(semPlot)
+
 lower_BA <- '
              281.349
              184.219 182.821
@@ -32,11 +34,13 @@ fit_A <- lavaan::cfa(model_A, sample.cov = list(cov_BA,cov_BNA), sample.nobs = c
                    group.equal = c("intercepts", "regressions"))
 summary(fit_A, standardized=TRUE,rsquare=T)
 
-semPaths(
-  object = fit_A,
-  what = "path",
-  whatLabels = "par"
-)
+semPaths(fit_A, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
+
 
 
 ############ STEPB
@@ -51,6 +55,13 @@ fit_B <- lavaan::cfa(model_B, sample.cov = list(cov_BA,cov_BNA), sample.nobs = c
                      group.equal = c("regressions"))
 summary(fit_B, standardized=TRUE,rsquare=T)
 
+semPaths(fit_B, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
+
 ######### STEPC
 
 model_C <- '
@@ -64,6 +75,14 @@ fit_C <- lavaan::cfa(model_C, sample.cov = list(cov_BA,cov_BNA), sample.nobs = c
                      group.equal = c("regressions"))
 summary(fit_C, standardized=TRUE,rsquare=T)
 
+semPaths(fit_C, whatLabels = "est",
+         sizeMan = 10, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
+
+
 ######### STEPD
 
 model_D <- '
@@ -76,6 +95,12 @@ fit_D <- lavaan::cfa(model_D, sample.cov = list(cov_BA,cov_BNA), sample.nobs = c
                      group.equal = c("intercepts","loadings"))
                      
 summary(fit_D, standardized=TRUE,rsquare=T)
+semPaths(fit_D, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
 
 ######## STEPE
 
@@ -91,6 +116,12 @@ fit_E <- lavaan::cfa(model_E, sample.cov = list(cov_BA,cov_BNA), sample.nobs = c
                      group.equal = c("intercepts","loadings"))
 
 summary(fit_E, standardized=TRUE,rsquare=T)
+semPaths(fit_E, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
 
 
 

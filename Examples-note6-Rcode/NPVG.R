@@ -1,7 +1,8 @@
 library(lavaan)
 library(readr)
+library(semPlot)
 
-urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note1-Rcode/NPVG(R).DAT"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note6-Rcode/NPVG(R).DAT"
 npvg = read_lines(urlfile)
 
 readCorrMatrix <- function(data){
@@ -88,6 +89,12 @@ fit <- lavaan::cfa(model, sample.cov = covmat, sample.nobs = c(77,79,74,71),
                              "loadings"))
 summary(fit, standardized=TRUE,rsquare=T)
 
+
+semPaths(fit, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
 
 
 

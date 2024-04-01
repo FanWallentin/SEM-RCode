@@ -1,5 +1,5 @@
 library(lavaan)
-
+library(semPlot)
 ######## EtructureA Factor Loadings, Factor Correlation, Error Variances Invariant
 
 lower1 <- '
@@ -18,6 +18,7 @@ lower2 <- '
 
 covmat1 <- getCov(lower1,names = c("VERBAL40","VERBAL50","MATH35", "MATH25") )
 covmat2 <- getCov(lower2,names = c("VERBAL40","VERBAL50","MATH35", "MATH25") )
+
 model <- '
           Verbal =~ VERBAL40 + VERBAL50
           Math =~ MATH35 + MATH25
@@ -27,6 +28,12 @@ fit_A <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
             group.equal = c( "loadings","lv.variances", "lv.covariances", "residuals"))
 
 summary(fit_A,standardized=TRUE,rsquare=T)
+semPaths(fit_A, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
 
 
 ######### EtructureB Factor Correlation and Error Variances Invariant
@@ -37,6 +44,12 @@ fit_B <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
 summary(fit_B,standardized=TRUE,rsquare=T)
 
 
+semPaths(fit_B, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
 
 ######### EtructureC Factor Correlation Invariant
 fit_C <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
@@ -44,6 +57,12 @@ fit_C <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
                      group.equal = c("lv.covariances"))
 
 summary(fit_C,standardized=TRUE,rsquare=T)
+
+semPaths(fit_C, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
 
 
 ######### EtructureD Factor Loadings and Factor Correlation Invariant
@@ -53,6 +72,12 @@ fit_D <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
                      group.equal = c("loadings", "lv.variances", "lv.covariances"))
 
 summary(fit_D,standardized=TRUE,rsquare=T)
+semPaths(fit_D, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
 
 
 

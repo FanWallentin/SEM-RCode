@@ -1,4 +1,5 @@
 library(lavaan)
+library(semPlot)
 lower1 <- '5.86 3.12 3.32 35.28 23.85 622.09 4.02 2.14 29.42 5.33 
 2.99 2.55 19.20 3.17 4.64 35.30 26.91 465.62 31.22 23.38 546.01'
 lower2 <- '8.20 3.47 4.36 45.65 22.58 611.63 6.39 3.16 44.62 7.32 
@@ -28,6 +29,12 @@ fit_A <- lavaan::cfa(modelA, sample.cov = list(covmat1,covmat2,covmat3),
                      group.equal = c("lv.variances","lv.covariances","residuals"))
 
 summary(fit_A, standardized=TRUE,rsquare=T)
+semPaths(fit_A, whatLabels = "est",curvature = 3,
+         sizeMan = 8, edge.label.cex = 0.5,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
+
 
 
 ##### Socio-characer B
@@ -49,6 +56,12 @@ fit_B <- lavaan::cfa(modelB, sample.cov = list(covmat1,covmat2,covmat3),
                      group.equal = c("lv.variances","lv.covariances","residuals"))
 
 summary(fit_B, standardized=TRUE,rsquare=T)
+
+semPaths(fit_B, whatLabels = "est",
+         sizeMan = 8, edge.label.cex = 0.75,
+         style = "ram",sizeMan2 = 5,
+         nCharNodes = 0, nCharEdges = 0,
+         layout = "tree2",rotation = 4)
 
 
 
