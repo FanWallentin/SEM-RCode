@@ -31,6 +31,14 @@ fit_A <- lavaan::cfa(model_A, sample.cov = corrmat, sample.nobs = 122,
 summary(fit_A, standardized=TRUE,rsquare=T,fit.measures=T)
 fitmeasures(fit_A)
 
+## Path diagrams
+require(semPlot)
+path = semPaths(fit_A, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 5,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
+
 ######## BagozziB
 
 model_B <- '
@@ -52,6 +60,13 @@ model_B <- '
 fit_B <- sem(model_B, sample.cov = corrmat, sample.nobs = 122,
               likelihood = "wishart")
 summary(fit_B, standardized=TRUE,rsquare=T,fit.measures=T)
+## Path diagrams
+require(semPlot)
+path = semPaths(fit_B, whatLabels = "est",
+                sizeMan = 8, edge.label.cex = 0.75,
+                style = "ram",sizeMan2 = 5,
+                nCharNodes = 0, nCharEdges = 0,
+                layout = "tree2",rotation = 4)
 
 
 

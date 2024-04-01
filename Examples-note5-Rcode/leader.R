@@ -33,5 +33,14 @@ fit2 <- lavaan::sem(data = leader1, model = model2,
                     std.lv=T)
 summary(fit2,standardized=TRUE,rsquare=T,fit.measures=T)
 
+semPaths(fit2, whatLabels = "est",
+         sizeMan = 5, edge.label.cex = 0.5, sizeLat = 5,
+         style = "ram",
+         nCharNodes = 0, nCharEdges = 0,intercepts = FALSE,
+         layout = "spring",thresholds = F,freeStyle = "red")
+
+
+
+
 
 
