@@ -9,13 +9,13 @@ colnames(npv)
 
 ##### npv1: Nine Psychological Variables - A Confirmatory Factor Analysis by Maximum Likelihood
 
-
-model_npv1 <- '
-          Visual =~ VISPERC + CUBES + LOZENGES + SCCAPS
+model_npv1  <- '
+          Visual =~ VISPERC + CUBES + LOZENGES
           Verbal =~ PARCOMP + SENCOMP + WORDMEAN
           Speed =~ ADDITION + COUNTDOT + SCCAPS
           
           '
+
 corr_npv1 = cor(npv)
 
 fit_npv1 = lavaan::cfa(model_npv1,sample.cov = corr_npv1,sample.nobs = 145,std.lv=TRUE,
@@ -56,12 +56,13 @@ path = semPaths(fit_npv2, whatLabels = "est",
 
 ##### npv3 & 4: Robust Diagonally Weighted Least Squares
 
-model_npv4  <- '
-          Visual =~ VISPERC + CUBES + LOZENGES
+model_npv4 <- '
+          Visual =~ VISPERC + CUBES + LOZENGES + SCCAPS
           Verbal =~ PARCOMP + SENCOMP + WORDMEAN
           Speed =~ ADDITION + COUNTDOT + SCCAPS
           
           '
+
 #For the DWLS, lavaan also provides ‘robust’ variants: WLSM, WLSMVS, WLSMV
 fit_npv4 = cfa(model_npv4,data = npv_std,std.lv=TRUE, estimator = "wlsmvs")
 summary(fit_npv4, standardized=TRUE,rsquare = T)
