@@ -1,4 +1,4 @@
-
+library(lavaan)
 ###### votaw #######
 
 lower <- '
