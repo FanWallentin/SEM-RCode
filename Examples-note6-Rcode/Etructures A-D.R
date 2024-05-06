@@ -29,7 +29,6 @@ fit_A <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
 
 summary(fit_A,standardized=TRUE,rsquare=T)
 
-lavTestLRT(fit_A, fit_B, fit_C)
 
 ######### EtructureB Factor Correlation and Error Variances Invariant
 fit_B <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
@@ -46,7 +45,7 @@ fit_C <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
 
 summary(fit_C,standardized=TRUE,rsquare=T)
 
-
+lavTestLRT(fit_A, fit_B, fit_C)
 ######### EtructureD Factor Loadings and Factor Correlation Invariant
 
 fit_D <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
