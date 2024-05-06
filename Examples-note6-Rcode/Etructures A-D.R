@@ -28,11 +28,6 @@ fit_A <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
             group.equal = c( "loadings","lv.variances", "lv.covariances", "residuals"))
 
 summary(fit_A,standardized=TRUE,rsquare=T)
-semPaths(fit_A, whatLabels = "est",
-         sizeMan = 8, edge.label.cex = 0.75,
-         style = "ram",sizeMan2 = 5,
-         nCharNodes = 0, nCharEdges = 0,
-         layout = "tree2",rotation = 4)
 
 
 
@@ -44,25 +39,12 @@ fit_B <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
 summary(fit_B,standardized=TRUE,rsquare=T)
 
 
-semPaths(fit_B, whatLabels = "est",
-         sizeMan = 8, edge.label.cex = 0.75,
-         style = "ram",sizeMan2 = 5,
-         nCharNodes = 0, nCharEdges = 0,
-         layout = "tree2",rotation = 4)
-
-
 ######### EtructureC Factor Correlation Invariant
 fit_C <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
                      sample.nobs=c(865,900),std.lv=T,likelihood = "wishart",
                      group.equal = c("lv.covariances"))
 
 summary(fit_C,standardized=TRUE,rsquare=T)
-
-semPaths(fit_C, whatLabels = "est",
-         sizeMan = 8, edge.label.cex = 0.75,
-         style = "ram",sizeMan2 = 5,
-         nCharNodes = 0, nCharEdges = 0,
-         layout = "tree2",rotation = 4)
 
 
 ######### EtructureD Factor Loadings and Factor Correlation Invariant
@@ -79,5 +61,7 @@ semPaths(fit_D, whatLabels = "est",
          layout = "tree2",rotation = 4)
 
 
+lavTestLRT(fit_A, fit_B, fit_C)
+lavTestLRT(fit_A, fit_D)
 
 
