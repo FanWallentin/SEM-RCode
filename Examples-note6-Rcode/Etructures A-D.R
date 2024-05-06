@@ -29,7 +29,7 @@ fit_A <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
 
 summary(fit_A,standardized=TRUE,rsquare=T)
 
-
+lavTestLRT(fit_A, fit_B, fit_C)
 
 ######### EtructureB Factor Correlation and Error Variances Invariant
 fit_B <- lavaan::cfa(model, sample.cov=list(covmat1,covmat2),
@@ -61,7 +61,6 @@ semPaths(fit_D, whatLabels = "est",
          layout = "tree2",rotation = 4)
 
 
-lavTestLRT(fit_A, fit_B, fit_C)
 lavTestLRT(fit_A, fit_D)
 
 
