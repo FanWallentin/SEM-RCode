@@ -1,8 +1,8 @@
 library(lavaan)
 
 ## input data
-
-stability <- read.table("~/Downloads/NEOMA-LISREL/Longitudinal/Stability.txt",header = T)
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note7-Rcode/Stability.txt"
+stability <- read.table(urlfile, header = T)
 
 ####### stability1a.spl #######
 model_1a <- '
