@@ -1,5 +1,7 @@
 library(lavaan)
-americanvalue <- read.csv("~/Desktop/PhD-SU/SEM/ordinal/Americanvalue.csv")
+
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note8-Rcode/Americanvalue.csv"
+americanvalue <- read.csv(urlfile)
 americanvalue <- americanvalue[,1:6]
 
 model <- '
