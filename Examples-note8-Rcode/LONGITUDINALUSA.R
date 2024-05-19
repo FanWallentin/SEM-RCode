@@ -1,6 +1,7 @@
 library(lavaan)
 
-longitudinal <- read.csv("~/Desktop/PhD-SU/SEM/ordinal/LONGITUDINALUSA.csv")
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note8-Rcode/LONGITUDINALUSA.csv"
+longitudinal <- read.csv(urlfile)
 longitudinal <- longitudinal[,1:12]
 names(longitudinal)
 model <-
