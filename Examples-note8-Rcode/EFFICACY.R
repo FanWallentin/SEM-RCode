@@ -1,6 +1,7 @@
 library(lavaan)
 
-efficacy <-  read.csv("~/Desktop/PhD-SU/SEM/ordinal/EFFICACY.csv")
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note8-Rcode/EFFICACY.csv"
+efficacy <-  read.csv(urlfile)
 efficacy <- efficacy[,1:6]
 
 model1 <- 
