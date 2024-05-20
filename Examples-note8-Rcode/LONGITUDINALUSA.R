@@ -3,7 +3,7 @@ library(lavaan)
 urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note8-Rcode/LONGITUDINALUSA.csv"
 longitudinal <- read.csv(urlfile)
 longitudinal <- longitudinal[,1:12]
-names(longitudinal)
+
 model <-
 "
           Efficac1 =~ NOSAY1 + VOTING1 + COMPLEX1 + NOCARE1
