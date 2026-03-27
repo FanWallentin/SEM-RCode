@@ -5,7 +5,8 @@ library(poLCA)
 ##
 ## Example 1. Two-class LCA. (Table 3.3, p. 32)
 ##
-data(cheating)
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note8-Rcode/cheating.csv"
+cheating <- read.csv(urlfile)
 f <- cbind(LIEEXAM,LIEPAPER,FRAUD,COPYEXAM)~1
 ch2 <- poLCA(f,cheating,nclass=2)	# log-likelihood: -440.0271 
 
