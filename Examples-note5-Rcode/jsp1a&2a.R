@@ -1,6 +1,6 @@
 library(lavaan)
 
-urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note4-Rcode/jsp_aggregated.csv"
+urlfile="https://raw.github.com/FanWallentin/SEM-RCode/main/Examples-note5-Rcode/jsp_aggregated.csv"
 jsp = read.csv(urlfile)
 jsp <- jsp[,c(1:6)]
 jsp[jsp==-9] = NA
