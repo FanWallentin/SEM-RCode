@@ -46,7 +46,7 @@ model <- '
 '
 
 fit <- lavaan::sem(model, sample.cov = covmat, sample.nobs = 500, 
-                   std.lv = T,likelihood = "wishart")
+                   std.lv = T,likelihood = "wishart",control = list(rel.tol = 1e-8))
 
 # Print the summary of the model
 summary(fit,standardized=TRUE,rsquare=T,fit.measures = TRUE)
