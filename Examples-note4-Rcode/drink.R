@@ -91,7 +91,7 @@ model15a <- '
              Behavior ~ Intention
 '
              
-fit15a <- lavaan::cfa(model15a, dathttp://127.0.0.1:13006/graphics/plot_zoom_png?width=129&height=100a = drink_std,
+fit15a <- lavaan::cfa(model15a, data = drink_std,
                       likelihood = "wishart",std.lv=T)
 summary(fit15a,rsquare=T,standardized=TRUE)             
              
