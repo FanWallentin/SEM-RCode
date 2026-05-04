@@ -63,7 +63,7 @@ fit3 <- lavaan::cfa(model1,
 
 summary(fit3, fit.measures=TRUE, standardized=TRUE)
 
-
+### Likelihood ratio test for model differences
 
 lavTestLRT(fit10, fit1)
 lavTestLRT(fit1,fit2)
