@@ -58,7 +58,8 @@ summary(fit2, fit.measures=TRUE, standardized=TRUE)
 fit3 <- lavaan::cfa(model1,
               data = data_all,
               group = "school",
-              group.equal = c("loadings","intercepts"))
+              group.equal = c("loadings","intercepts"),
+              control = list(rel.tol = 1e-8))
 
 
 summary(fit3, fit.measures=TRUE, standardized=TRUE)
